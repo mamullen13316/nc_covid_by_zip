@@ -47,10 +47,10 @@ if resp.status_code == 200 and resp.json()['features']:
       pop = resp.json()['features'][0]['attributes']['TotalPop']
       place = resp.json()['features'][0]['attributes']['Place']
       case_avg = round_up(cases/pop, 4) * 100
-      print("\n*-------------------------------------------------------------------*")
+      print("\n*---------------------------------------------------------------------------*")
       print(f"Number of cases on {today} in zip code {zip_code} is: {cases}")
-      print(f"This is about {case_avg}% of the {pop} residents in {place}")
-      print("*-------------------------------------------------------------------*\n")
+      print(f"This is about {case_avg}% of the {pop} residents in {place} zip {zip_code}")
+      print("*---------------------------------------------------------------------------*\n")
 else:
       print(f"Query failed for zip code {zip_code}")
       print("Did you enter a valid NC zip code?  Please try again.")
