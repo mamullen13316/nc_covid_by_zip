@@ -25,7 +25,9 @@ optional arguments:
 bash-3.2$ python nc_covid_by_zip.py --zip 27502
 
 *-------------------------------------------------------------------*
-Number of cases on 2020-05-19 19:33:24 EDT in zip code 27502 is: 47
+Number of cases on 2020-05-19 20:18:25 EDT in zip code 27502 is: 47
+This is about 0.11% of the 43747 residents in Apex
 *-------------------------------------------------------------------*
+
 
 ```

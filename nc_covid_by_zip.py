@@ -6,6 +6,12 @@ import requests
 import time
 import sys
 import argparse
+import math
+
+
+def round_up(n, decimals=0):
+    multiplier = 10 ** decimals
+    return math.ceil(n * multiplier) / multiplier
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-z', '--zip', type=int, help='NC ZIP CODE', required=False)
@@ -38,8 +44,12 @@ today = time.strftime("%Y-%m-%d %H:%M:%S %Z",time.localtime())
 
 if resp.status_code == 200 and resp.json()['features']:
       cases = resp.json()['features'][0]['attributes']['Cases']
+      pop = resp.json()['features'][0]['attributes']['TotalPop']
+      place = resp.json()['features'][0]['attributes']['Place']
+      case_avg = round_up(cases/pop, 4) * 100
       print("\n*-------------------------------------------------------------------*")
       print(f"Number of cases on {today} in zip code {zip_code} is: {cases}")
+      print(f"This is about {case_avg}% of the {pop} residents in {place}")
       print("*-------------------------------------------------------------------*\n")
 else:
       print(f"Query failed for zip code {zip_code}")
